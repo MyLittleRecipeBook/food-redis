@@ -1,0 +1,24 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "mlr-dev-rds-ns" [ label = "mlr-dev-rds-ns
+(kubernetes::Namespace)", shape =rectangle ];
+  "mlr-dev-rds-cm-snt" [ label = "mlr-dev-rds-cm-snt
+(kubernetes::ConfigMap)", shape =rectangle ];
+  "mlr-dev-rds-sts" [ label = "mlr-dev-rds-sts
+(kubernetes::StatefulSet)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "mlr-dev-rds-dpl-snt" [ label = "mlr-dev-rds-dpl-snt
+(kubernetes::Deployment)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "mlr-dev-rds-svc" [ label = "mlr-dev-rds-svc
+(kubernetes::Service)", shape =rectangle, fillcolor = "#E78F81" ];
+  "mlr-dev-rds-svc-snt" [ label = "mlr-dev-rds-svc-snt
+(kubernetes::Service)", shape =rectangle, fillcolor = "#E78F81" ];
+  "mlr-dev-rds-cm-snt" -> "mlr-dev-rds-ns";
+  "mlr-dev-rds-sts" -> "mlr-dev-rds-ns";
+  "mlr-dev-rds-sts" -> "mlr-dev-rds-svc";
+  "mlr-dev-rds-dpl-snt" -> "mlr-dev-rds-ns";
+  "mlr-dev-rds-dpl-snt" -> "mlr-dev-rds-cm-snt";
+  "mlr-dev-rds-svc" -> "mlr-dev-rds-ns";
+  "mlr-dev-rds-svc" -> "mlr-dev-rds-sts";
+  "mlr-dev-rds-svc-snt" -> "mlr-dev-rds-ns";
+  "mlr-dev-rds-svc-snt" -> "mlr-dev-rds-dpl-snt";
+}
